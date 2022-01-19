@@ -14,6 +14,12 @@ function digitoOnClick(event) {
         //input.value = input.value + numero
         input.value += numero
     }
+
+    const divNombre = document.getElementById("txt_nombre")
+    if (divNombre != null) {
+        divNombre.parentElement.removeChild(divNombre)
+    }
+    
 }
 
 const operacionOnClick = (event) => {
@@ -32,6 +38,18 @@ const operacionOnClick = (event) => {
     }
 }
 
+const crearLineaYNombre = () => {
+    const hr = document.createElement("hr")
+    const body = document.firstElementChild.children[2]
+    body.appendChild(hr)
+
+    const div = document.createElement("div")
+    div.innerText = "Hernan Quintana"
+    div.setAttribute("id", "txt_nombre")
+    div.setAttribute("class", "alert alert-primary")
+    body.appendChild(div)
+}
+
 const main = function() {
     // Registrar los eventos click de los botones
     document.getElementById("but0").onclick = digitoOnClick
@@ -46,8 +64,11 @@ const main = function() {
     document.getElementById("but9").onclick = digitoOnClick
 
     document.getElementById("butC").onclick = operacionOnClick
-    document.getElementById("butIgual").onclick = operacionOnClick
+    document.getElementById("butIgual").addEventListener("click", operacionOnClick)
     document.getElementById("butMas").onclick = operacionOnClick
+
+    // Crear linea y nombre
+    crearLineaYNombre();
 }
 
-main()
+window.onload = main
