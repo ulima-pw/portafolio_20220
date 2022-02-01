@@ -12,14 +12,6 @@ const crearDivImagenCarrusel = (urlImagen, esPrimera) => {
 
 }
 
-// const callbackSuccess = (response) => {
-//     return response.json()
-// }
-
-// const callbackReadResponse = (data) => {
-    
-// }
-
 const callbackError = (error) => {
     console.error(error)
 }
@@ -101,15 +93,16 @@ const cargarDatos = () => {
 }
 
 
-// const cargarProyectos = () => {
-    
-// }
-
-
 const main = () => {
     // Cargar primero las imagenes y luego proyectos
     cargarDatosAsyncAwait()
     //cargarProyectos()
+    const butLogin = document.getElementById("butLogin")
+    butLogin.addEventListener("click", () => {
+        const username = document.getElementById("txt_username").value
+        localStorage.setItem("USERNAME", username)
+        console.log(username)
+    })
 }
 
 window.addEventListener("load", main)
